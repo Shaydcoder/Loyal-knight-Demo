@@ -1,0 +1,16 @@
+{
+  "name": "secure-notes",
+  "version": "1.0.0",
+  "description": "Minimal Secure Notes demonstration service for Loyal Knight VS Code extension",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.js"
+  },
+  "keywords": ["demo", "security", "express"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
