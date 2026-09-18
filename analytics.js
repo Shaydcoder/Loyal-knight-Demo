@@ -14,7 +14,6 @@ const eventLog = [];
  */
 function trackEvent(eventName, metadata = {}) {
   const eventRecord = {
-    id: `evt_${Date.now()}_${Math.floor(Math.random() * 1000)}`,
     eventName,
     metadata,
     timestamp: new Date().toISOString(),
