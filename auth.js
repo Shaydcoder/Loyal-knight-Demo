@@ -3,6 +3,30 @@
 
 const SYNTHETIC_DEMO_TOKEN = "synthetic_demo_token_secret_12345";
 
+// CASE 3: Environment variable source
+const token = process.env.API_TOKEN || "synthetic_env_token";
+
+// CASE 4: Function parameter propagation
+function sendTokenToService(passedToken) {
+  // CASE 6: Logger sink
+  console.log("Demo token logger sink:", passedToken);
+
+  // CASE 5: HTTP sink
+  try {
+    // If fetch is unavailable (older Node), the catch block prevents crashes
+    fetch("http://example.com/api", {
+      headers: {
+        "Authorization": `Bearer ${passedToken}`
+      }
+    }).catch(() => {});
+  } catch (e) {
+    // ignore
+  }
+}
+
+sendTokenToService(token);
+
+
 /**
  * Extracts bearer token from Authorization header.
  * @param {string} [authHeader]

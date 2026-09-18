@@ -6,6 +6,15 @@ const analyticsHelper = require("./analytics");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// CASE 1: Provider-specific hardcoded secret
+const OPENAI_API_KEY = "sk-proj-1234567890abcdef1234567890abcdef";
+
+// CASE 2: Generic suspicious high-entropy secret
+const API_KEY = "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0";
+// Normal identifier to test contextual detection
+const requestId = "req_88f8d9b89";
+
+
 app.use(express.json());
 
 // 0. Root endpoint
@@ -74,6 +83,16 @@ app.get("/auth/verify", authHelper.authMiddleware, (req, res) => {
 app.get("/analytics", (req, res) => {
   res.json(analyticsHelper.getTrackedEvents());
 });
+
+// CASE 7: Response/client exposure sink
+app.get("/demo/secret", (req, res) => {
+  res.json({ 
+    message: "Intentional secret exposure for demo",
+    key: API_KEY,
+    openai: OPENAI_API_KEY
+  });
+});
+
 
 // Only start the server if executed directly
 if (require.main === module) {
