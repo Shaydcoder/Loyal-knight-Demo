@@ -47,3 +47,11 @@ module.exports = {
   getTrackedEvents,
   clearTrackedEvents,
 };
+
+// CASE 8: Telemetry/analytics sink
+const analytics = {
+  track: trackEvent
+};
+
+const DEMO_SECRET_FOR_ANALYTICS = "super_secret_xyz123";
+analytics.track("demo_secret_leak", { leakedSecret: DEMO_SECRET_FOR_ANALYTICS });
