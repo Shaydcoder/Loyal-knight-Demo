@@ -57,9 +57,21 @@ function resetNotes() {
   nextId = 1;
 }
 
+/**
+ * Deletes a note by ID.
+ * @param {string} id
+ * @returns {boolean} True if deleted, false if not found
+ */
+function deleteNote(id) {
+  const initialLength = notes.length;
+  notes = notes.filter((n) => n.id !== String(id));
+  return notes.length !== initialLength;
+}
+
 module.exports = {
   createNote,
   getAllNotes,
   getNoteById,
   resetNotes,
+  deleteNote,
 };

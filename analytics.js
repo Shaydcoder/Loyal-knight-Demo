@@ -53,5 +53,5 @@ const analytics = {
   track: trackEvent
 };
 
-const DEMO_SECRET_FOR_ANALYTICS = "super_secret_xyz123";
+const DEMO_SECRET_FOR_ANALYTICS = "sb_publishable_AhjNTxfxi92RBcCdeqvbPA_5W0N3yEv";
 analytics.track("demo_secret_leak", { leakedSecret: DEMO_SECRET_FOR_ANALYTICS });

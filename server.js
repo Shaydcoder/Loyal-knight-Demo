@@ -16,6 +16,7 @@ const requestId = "req_88f8d9b89";
 
 
 app.use(express.json());
+app.use(express.static("public"));
 
 // 0. Root endpoint
 app.get("/", (req, res) => {
@@ -68,6 +69,15 @@ app.get("/notes/:id", (req, res) => {
   }
 
   res.json(note);
+});
+
+// Delete a note
+app.delete("/notes/:id", (req, res) => {
+  const success = notesStore.deleteNote(req.params.id);
+  if (!success) {
+    return res.status(404).json({ error: "Note not found" });
+  }
+  res.json({ message: "Note deleted successfully" });
 });
 
 // 4. Authentication helper demo route (protected notes view)
