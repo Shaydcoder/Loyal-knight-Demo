@@ -20,13 +20,8 @@
       "*.map",
       "package-lock.json",
       "yarn.lock",
-      "pnpm-lock.yaml"
-    ]
-  },
-  "whitelist": {
-    "folders": [],
-    "files": [
-      ".env.example"
+      "pnpm-lock.yaml",
+      "package.json"
     ]
   },
   "ignoredMatches": [],
